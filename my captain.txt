@@ -1,0 +1,94 @@
+			1.most frequent letters in a word(my captain){part 1}
+
+def most_frequent(s):
+    d = dict()
+    for i in s:
+        if i not in d:
+            d[i] = 1
+        else:
+            d[i] += 1
+    return d
+a=most_frequent('mississippi')
+print(a)
+
+output:-{'m': 1, 'i': 4, 's': 4, 'p': 2}			
+
+			2.taking student information and spliting information(source:- my captain)
+
+condition=True
+while(condition):
+    student_info=input("enter information about about student in the following format(name age phone_number e-mail_ID):")
+    print("entered information is:"+student_info)
+    #split
+    student_info_list=student_info.split(' ')
+    print("entered information is:"+str(student_info_list))
+    print(student_info)
+    condition_ceck=input("enter (yes/no) if you want to enter information for another student:")
+    if condition_ceck=="yes":
+        condition=True
+    else:
+        condition=False
+
+output:-enter information about about student in the following format(name age phone_number e-mail_ID):sai 18 8919475676 sai@gmail.com
+entered information is:sai 18 8919475676 sai@gmail.com
+entered information is:['sai', '18', '8919475676', 'sai@gmail.com']
+sai 18 8919475676 sai@gmail.com
+enter (yes/no) if you want to enter information for another student:no
+
+			3.school admin project (source:-my captain)
+
+import csv
+def write_into_csv(into_list):
+    with open('student_info.csv','a',newline='') as csv_file:
+        writer=csv.writer(csv_file)
+        if csv_file.tell()==0:
+            writer.writerow(["name","age","contact_number","e-mail_id"])
+        writer.writerow(into_list)
+
+if __name__=='__main__':
+    condition=True
+    student_num=1
+    while(condition):
+        student_info=input("enter student information for student #{} in the following format(name age contact_number email_id):".format(student_num))
+        #split
+        student_info_list=student_info.split(' ')
+        print("\nthe entered information is-\nname:{}\nage:{}\ncontact_number:{}\nemail_id:{}"
+              .format(student_info_list[0],student_info_list[1],student_info_list[2],student_info_list[3]))
+        choice_check=input("is entered information is correct!")
+        if choice_check=="yes":
+            write_into_csv(student_info_list)
+            condition_check=input("enter (yes/no) if you want to enter information for information for another student:")
+            if condition_check=="yes":
+                condition=True
+                student_num=student_num+1
+            elif condition_check=="no":
+                condition=False
+            elif condition_check=="no":
+                print("\n please re-enter the values!")
+
+output:-enter student information for student #1 in the following format(name age contact_number email_id):sai 18 9181475967 sai@gmail.com
+
+the entered information is-
+name:sai
+age:18
+contact_number:9181475967
+email_id:sai@gmail.com
+is entered information is correct!yes
+enter (yes/no) if you want to enter information for information for another student:yes
+enter student information for student #2 in the following format(name age contact_number email_id):krish 20 9194965063 kk@gmail.com
+
+the entered information is-
+name:krish
+age:20
+contact_number:9194965063
+email_id:kk@gmail.com
+is entered information is correct!no
+enter student information for student #2 in the following format(name age contact_number email_id):krishna 20 9491769113 k@gmail.com
+
+the entered information is-
+name:krishna
+age:20
+contact_number:9491769113
+email_id:k@gmail.com
+is entered information is correct!yes
+enter (yes/no) if you want to enter information for information for another student:no
